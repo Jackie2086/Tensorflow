@@ -1,0 +1,44 @@
+import matplotlib.pyplot as plt
+
+def plot_bar_and_line_chart(data, labels=None, title='Bar and Line Chart', xlabel='Categories', ylabel='Values'):
+    """
+    Plots a bar chart and a line chart for four data points.
+
+    Parameters:
+    - data (list or tuple): A list or tuple containing four numerical values.
+    - labels (list or tuple): A list or tuple containing labels for the four data points. Default is None.
+    - title (str): The title of the chart. Default is 'Bar and Line Chart'.
+    - xlabel (str): The label for the x-axis. Default is 'Categories'.
+    - ylabel (str): The label for the y-axis. Default is 'Values'.
+    """
+    
+    if len(data) != 4:
+        raise ValueError("Data must contain exactly four values.")
+    
+    if labels is None:
+        labels = ['A', 'B', 'C', 'D']
+    
+    if len(labels) != 4:
+        raise ValueError("Labels must contain exactly four values.")
+    
+    plt.figure(figsize=(8, 6))
+    
+    # Plotting the bar chart
+    plt.bar(labels, data, color='#1f77b4', alpha=0.7, label='Bar')  # Light blue color for bar chart
+    
+    # Plotting the line chart
+    plt.plot(labels, data, color='#2b3a67', marker='o', linestyle='-', linewidth=2, markersize=8, label='Line')  # Dark blue color for line chart
+    
+    plt.title(title)
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    # plt.xticks(rotation=20)  # Rotating x-axis labels to 45 degrees
+    # plt.legend()
+    plt.tight_layout()  # Adjust layout to make room for rotated x-axis labels
+    plt.show()
+
+# Example usage:
+data_points = [500, 108.73, 10.1, 0.1]
+plot_bar_and_line_chart(data_points, labels=['Original', 'TensorFlow', 'TensorFlow GPU', 'Further on HPC'], title='Calculation Time Comparison', xlabel='Methods', ylabel='Time(s)')
+
+
